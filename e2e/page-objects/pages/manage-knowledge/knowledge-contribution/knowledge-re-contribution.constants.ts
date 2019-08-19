@@ -1,0 +1,101 @@
+export class KnowledgeReContributionConstant {
+    static readonly elementNames = Object.freeze({
+        title: 'Title',
+        contentFrame: 'contentframe',
+        contributeAuthoredDocuments: 'Contribute Authored Documents',
+        generateBatFile: 'Generate bat file',
+        start: 'start',
+        from: 'From',
+        to: 'To',
+        publicationStatuses: 'Publication Status',
+        draft: 'Draft',
+        published: 'Published',
+        templates: 'Templates',
+        styleSheets: 'Style Sheets',
+        selectUsers: 'Select Users',
+        contribution: 'Contribution',
+        queued: 'Queued',
+        previousRuns: 'Previous Runs',
+        noUserFound: 'No Users found.',
+        stop: 'Stop',
+        ok: 'OK',
+        uiDialog: 'UI Dialog',
+        submit: 'Submit',
+        cancel: 'Cancel',
+        selectedUserList: 'Selected User List',
+        removeUser: 'removeRecipient',
+        no: 'No',
+        yes: 'Yes',
+        updated: 'Updated:',
+        status: 'Status:',
+        totalQueued: 'Total to be Queued:',
+        totalProcessed: 'Total to be Processed:',
+        itemsProcessed: 'Items Processed:',
+        sucessful: 'Successful:',
+        failed: 'Failed:',
+        processing: 'Processing:',
+        viewDetails: 'View Details',
+        contributeFailedItems: 'Contribute Failed Items',
+        text: 'text',
+        viewList: 'View List',
+    });
+
+    static readonly classes = Object.freeze({
+        title: 'pop_hd_text',
+        uiDialog: 'ui-dialog',
+        uiDialogTitle: 'ui-dialog-title',
+        uiDialogTitleBar: 'ui-dialog-titlebar',
+    });
+
+    static readonly ids = Object.freeze({
+        contentFrame: 'contentframe',
+        contributeAuthoredDocuments: 'contributeAuthoredDocuments',
+        generateBatFile: 'btnGenerateBatFile',
+        start: 'btnStart',
+        fromID: 'fromID',
+        toID: 'toID',
+        publicationStatuses: 'publicationStatuses',
+        templates: 'templates',
+        styleSheets: 'styleSheets',
+        selectUser: 'btnSelectUsersForAuthoringDocuments',
+        dialogIFrame: 'dialogIFrame',
+        firstname: 'firstname',
+        lastname: 'lastname',
+        username: 'username',
+        showAllBtn: 'showAllBtn',
+        search: 'Image2',
+        findUsersFrame: 'findUsersFrame',
+        apteanBody: 'aptean_body',
+        fileName: 'fileName',
+        selectItems: 'selectItems',
+        selectedFrame: 'selectedFrame',
+        selectedUser: 'usersForAuthoringDocuments',
+        apteantabs: 'aptean-tabs',
+        contribution: 'contribution',
+        queued: 'queued',
+        previousRuns: 'previousRuns',
+        apeanMiddle: 'aptean-middle-div',
+        contributeFailedItems: 'contributeFailedItems',
+        cancelIFrameID: 'cancelIFrameID',
+    });
+
+    static readonly titles = Object.freeze({
+        pageTitle: 'Knowledge Re-Contributor',
+        iDrangeMessage: 'ID Range: From value must be less than To value.',
+        profileEditor: 'Profile Editor',
+        saveBatFile: 'Save Bat File',
+        enterValue: 'Enter value for First Name, Last Name or User Name',
+        performSelectedTask: 'Are you sure you want to perform the selected tasks?',
+        stopQueuingDoc: 'Are you sure you want to stop',
+        contributionFailedList: 'Contribution Failed List',
+    });
+
+    static get messages() {
+        return {
+            areYouSureYouWantToPerformSelectedTasks: 'Are you sure you want to perform the selected tasks?',
+            areYouSureYouWantToStopTheCurrentProcess: 'Are you sure you want to stop the current process?',
+            areYouSureYouWantToStopContributingTheCurrentBatch:
+                'Are you sure you want to stop contributing the current batch?',
+        };
+    }
+}

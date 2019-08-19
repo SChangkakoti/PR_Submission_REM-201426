@@ -1,0 +1,98 @@
+export class AdminHomePageConstant {
+    static get elementNames() {
+        return {
+            hamburger: 'Hamburger',
+            home: 'Home',
+            welcomeUser: 'Admin',
+            manageWorkbench: 'Manage Workbench',
+            manageCommunities: 'Manage Communities',
+            manageKnowledge: 'Manage Knowledge',
+            managePeople: 'Manage People',
+            manageSiteExp: 'Manage Site Exp',
+            administerSystem: 'Administer System',
+            settings: 'Settings',
+            logout: 'Logout',
+            interviewBuilder: 'Interview Builder',
+            resolutionFlowDesigner: 'Resolution Flow Designer',
+            masterEmailTemplateBuilder: 'Master Email Template Builder',
+            contentAlertManager: 'Content Alert Manager',
+            communitiesManager: 'Communities Manager',
+            pollManager: 'Poll Manager',
+            rewardPointsManager: 'Reward Points Manager',
+            contentIFrame: 'Content IFrame',
+            rewardsPointsManager: 'Reward Points Manager',
+            knowledgeModel: 'Knowledge Model',
+            knowlegdeAuthoring: 'Knowledge Authoring',
+            knowledgeContribution: 'Knowledge Contribution',
+            agentLevelManager: 'Agent Level Manager',
+            enterpriseReputationLevelManager: 'Enterprise Reputation Level Manager',
+            groupCreator: 'Group Creator',
+            userGroupFinder: 'User & Group Finder',
+            roleManagerKKC: '(KKC)',
+            roleManagerKSS: '(KSS)',
+            userCreator: 'User Creator',
+            savedQueryManager: 'Saved Query Manager',
+            agentMicrosite: 'Agent Microsite',
+            customerMicrosite: 'Customer Microsite',
+            tdMicrosite: 'TD_Microsite',
+            analytics: 'Analytics',
+            configurationSettings: 'Configuration Settings',
+            nofiticationsAndSubscriptions: 'Notifications and Subscriptions',
+            systemMaintenanceAndTroubleshooting: 'System Maintenance and Troubleshooting',
+            transferDataManager: 'Transfer Data Manager',
+            LanguageManager: 'Language Manager',
+            changeLogViewer: 'Change Log Viewer',
+            about: 'About',
+            help: 'Help',
+            sidebarMenu: 'Sidebar menu',
+            contentAccessLevelManager: 'Content Access Level Manager',
+            customerDictionary: 'Customer Dictionary',
+            documentTaggingReport: 'Document Tagging Report',
+            universalMetadataManager: 'Universal Metadata Manager',
+            feedbackMetadataManager: 'Feedback Metadata Manager',
+            knowledgeReContribution: 'Knowledge Re-Contributor',
+            workflowBuilder: 'Workflow Builder',
+            documentStyleSheetsUploader: 'Document Style Sheets Uploader',
+            knowledgeSourceManager: 'Knowledge Source Manager',
+            unifiedTemplateBuilder: 'Unified Template Builder',
+            documentTransferManager: 'Document Transfer Manager',
+            micrositeBuilder: 'Microsite Builder',
+            rssFeedManager: 'RSS Feed Manager',
+            emailTemplateManager: 'Email Template Manager',
+            successConfManager: 'Success Configuration Manager',
+            dateConfManager: 'Date Configuration Manager',
+            threshholdConfManager: 'Threshold Configuration Manager',
+            recommendationManager: 'Recommendation Manager',
+            visualSearchManager: 'Visual Search Manager',
+        };
+    }
+
+    static get attributes() {
+        return {
+            id: {
+                apteanHamburger: 'aptean-hamburger',
+                manageWorkbench: 'manageworkbench',
+                manageCommunities: 'managecommunities',
+                manageKnowledge: 'manageknowledge',
+                managePeople: 'managepeople',
+                manageSiteExp: 'managesiteexp',
+                administerSystem: 'administersystem',
+                buttonSettings: 'button-settings',
+                contentFrame: 'contentframe',
+            },
+            classes: {
+                apteanSideMenuButtonText: 'aptean-side-menu-button-text',
+                apteanSecondLevelMenuLink: 'aptean-second-level-menu-link',
+                apteanWelcome: 'aptean-HD-welcome',
+                apteanSideMenuButton: 'aptean-side-menu-button',
+                apteanThirdLevelMenuLink: 'aptean-third-level-menu-link',
+            },
+        };
+    }
+
+    static get labels() {
+        return {
+            welcomeToKnovaAdmin: 'Welcome to Knova Administrator!',
+        };
+    }
+}
