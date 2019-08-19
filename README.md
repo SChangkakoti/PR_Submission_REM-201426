@@ -1,4 +1,4 @@
-# Avolin-Knova Automation framework
+# Avolin-Knova Automation framework Regression Jira Tickes
 It keeps all the automated tests for [E2E](https://jira.devfactory.com/projects/KNOV/issues) scenrios. The automation project is written with: Protractor + Jasmine + Typescript + Node.js
 
 ## Getting started
