@@ -1,0 +1,29 @@
+    node('automation-testrunner') {
+        parameters{
+            string(name: 'BASE_URL', defaultValue: "http://10.25.212.44:8080", description: 'URL of QA env')
+        }
+        ansiColor('xterm') {
+            def PUBLISH_RESULTS = "npm run publish:testrail -- -D"
+            def NPM_INSTALL = 'npm install'
+			def COMMON_ARGS = "--baseUrl=params.BASE_URL --params.maxInstances=1 --params.testEnv=QA"
+            def CMD = "npm run e2e:ci -- ${COMMON_ARGS} || echo 'Tests failed'"
+            def CMD_RETRY = "npm run retry:prepare || npm run e2e:rerun -- ${COMMON_ARGS}"
+			
+            try {
+                stage('Build') {
+                    bat "${NPM_INSTALL}" 
+                }
+				stage('RUN Tests') {
+				    bat "${CMD}"
+                    bat "echo 'Rerun Tests: Attempt-1'"
+                    bat "${CMD_RETRY}"
+                    bat "echo 'Rerun 1 Completed'"
+                }
+            } finally {
+                stage('Publish Reports') {
+                    allure includeProperties: false, jdk: '', results: [[path: "auto-generated/allure-results"]]
+                }
+            }
+        }
+    }
+    

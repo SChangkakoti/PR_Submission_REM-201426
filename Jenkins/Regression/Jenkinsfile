@@ -1,0 +1,68 @@
+pipeline {
+    agent { label 'automation-testrunner' }
+    options {
+        skipDefaultCheckout()
+        buildDiscarder logRotator(numToKeepStr: '20')
+    }
+    parameters {
+        string(name: 'BASE_URL', defaultValue: "http://10.25.212.44:8080", description: 'URL of the environment')
+        choice(name: 'TEST_ENV', choices: ['STAG', 'QA'], description: 'test environment')
+        string(name: 'MAX_INSTANCES', defaultValue: '1', description: '')
+        string(name: 'GIT_BRANCH', defaultValue: 'develop', description: '')
+        booleanParam(name: 'PUBLISH_TESTRAIL_RESULTS', defaultValue: false, description: 'DO NOT SELECT THIS CHECKBOX')
+        string(name: 'RETRY', defaultValue: 'false', description: '')
+    }
+    environment {
+        PUBLISH_RESULTS = "npm run publish:testrail -- -D"
+        NPM_INSTALL = 'npm install'
+        COMMON_ARGS = "--baseUrl=$BASE_URL --params.maxInstances=$MAX_INSTANCES --params.testEnv=$TEST_ENV --suite=regression_tests"
+        CMD = "npm run e2e:ci -- ${COMMON_ARGS} || echo 'Tests failed'"
+        CMD_RETRY = "npm run retry:prepare || npm run e2e:rerun -- ${COMMON_ARGS}"
+        TESTRAIL_MILESTONE_NAME_PREFIX = " ${TEST_ENV}-RegressionTests-"
+    }
+    stages {
+        stage ('Checkout') {
+            steps {
+                script {
+                    catchError {
+                        cleanWs()
+                    }
+                    currentBuild.description = "TestEnv: ${env.TEST_ENV}<br>URL: ${BASE_URL}<br>Branch: ${GIT_BRANCH}"
+                    checkout([$class: 'GitSCM', branches: [[name: '$GIT_BRANCH']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'service-knova', url: 'https://github.com/trilogy-group/Avolin-Knova-AutomationTests.git']]])
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat "${NPM_INSTALL}"
+            }
+        }
+
+        stage('RUN Tests') {
+            steps {
+                script {
+                    bat "${CMD}"
+                    
+                    script {
+                        if (env.RETRY == 'true') {
+                            bat "echo 'Rerun Tests: Attempt-1'"
+                            bat "${CMD_RETRY}"
+                            bat "echo 'Rerun 1 Completed'"
+                        }
+                    }
+                }
+            }
+        }
+    }
+    post{
+        always{
+            allure includeProperties: false, jdk: '', results: [[path: "auto-generated/allure-results"]]
+            script {
+                if (env.PUBLISH_TESTRAIL_RESULTS.toBoolean() == true) {
+                    bat "${PUBLISH_RESULTS}"
+                }
+            }
+        }
+    }
+}
